@@ -55,7 +55,7 @@ multi sub pw-recurse($wc, Pod::Block::Para $node, $level) {
 }
 
 multi sub pw-recurse($wc, Pod::Block::Named $node, $level) {
-    $wc.pod-named(@*TEXT, $node.name);
+    $wc.pod-named(@*TEXT, $node.name, config => $node.config);
 }
 
 multi sub pw-recurse($wc, Pod::Block::Comment $node, $level) {
@@ -87,7 +87,7 @@ multi sub pw-recurse($wc, Pod::Item $node, $level) {
 }
 
 multi sub pw-recurse($wc, Pod::Config $node, $level) {
-    $wc.pod-item($node.type, $node.config);
+    $wc.pod-config($node.type, $node.config);
 }
 
 multi sub pw-recurse($wc, @olditems, $level) {
