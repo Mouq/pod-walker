@@ -36,7 +36,7 @@ sub pod-walk(Pod::Walker $wc, Pod::Block $START) is export {
     return pw-recurse($wc, $START, 0);
 }
 
-proto sub pw-recurse($wc, $node, $level) {
+proto sub pw-recurse($wc, $node, $level) is export {
     note "LEVEL $level".indent($level * 2) if $wc.debug;
 
     my @*TEXT;
